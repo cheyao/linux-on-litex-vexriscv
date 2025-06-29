@@ -785,3 +785,18 @@ class Colognechip_gatemate_evb(Board):
             "serial",
             "sdcard",
         })
+
+# Icepi Zero support -----------------------------------------------------------------------------------
+
+class Icepi_zero(Board):
+    soc_kwargs = {"l2_size" : 2048} # Use Wishbone and L2 for memory accesses.
+    def __init__(self):
+        from litex_boards.targets import icepi_zero
+        Board.__init__(self, icepi_zero.BaseSoC, soc_capabilities={
+            # Communication
+            "serial",
+            # Storage
+            "sdcard",
+            # Video,
+            # "framebuffer",
+        })
